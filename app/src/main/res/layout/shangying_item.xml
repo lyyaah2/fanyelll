@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_dianyingtu"
+            android:layout_width="180dp"
+            android:layout_height="250dp"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_ming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/iv_dianyingtu"
+            android:text="片名" />
+
+        <TextView
+            android:id="@+id/tv_dianyingming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_ming"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@+id/iv_dianyingtu"
+            android:text="电影名称" />
+
+        <TextView
+            android:id="@+id/tv_shijian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_dianyingming"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/iv_dianyingtu"
+            android:text="上映时间" />
+
+        <TextView
+            android:id="@+id/tv_shangyingshangjian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_shijian"
+            android:layout_toRightOf="@+id/iv_dianyingtu"
+            android:text="2015年" />
+
+        <TextView
+            android:id="@+id/tv_daoyan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_shangyingshangjian"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/iv_dianyingtu"
+            android:text="导演" />
+
+        <TextView
+            android:id="@+id/tv_daoyanming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_daoyan"
+            android:layout_toRightOf="@+id/iv_dianyingtu"
+            android:text="约翰" />
+
+        <TextView
+            android:id="@+id/tv_zhuyan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_daoyanming"
+            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@+id/iv_dianyingtu"
+            android:text="主演" />
+
+        <TextView
+            android:id="@+id/tv_zhuyanming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_zhuyan"
+            android:layout_toRightOf="@+id/iv_dianyingtu"
+            android:text="钱步师" />
+
+        <TextView
+            android:id="@+id/tv_dianyingInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_dianyingtu"
+            android:layout_marginLeft="8dp"
+            android:text="这是一部"
+            android:textSize="15dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/taoxin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/index_follow" />
+
+        <TextView
+            android:id="@+id/xiangkan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="想看" />
+
+        <ImageView
+            android:id="@+id/wujiaoxing"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/join_board" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="赞过" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/detail_share"
+            android:layout_marginLeft="170dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="#ddffff"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+</LinearLayout>
