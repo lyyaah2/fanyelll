@@ -1,5 +1,6 @@
 package com.chalenge.fanyelll.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,10 +8,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 
+import com.chalenge.fanyelll.DuanBofangActivity;
 import com.chalenge.fanyelll.Mypath.Mypathconfig;
 import com.chalenge.fanyelll.R;
 import com.chalenge.fanyelll.adapter.Adapter_duanpianActivity;
@@ -37,7 +40,7 @@ import okhttp3.Response;
 public class ShangyingFragment extends Fragment {
     private static final String TAG = "ShangyingFragment";
     private PullToRefreshListView pullToRefreshListView;
-    private List<ShangYingBean.DataBean.ListBean> data=new ArrayList<>();
+    private List<ShangYingBean.DataBean.ListBean> data = new ArrayList<>();
     private ShangYingPullToAdapter adapter_shangying;
     private int page = 1;
     int index1;
@@ -68,14 +71,24 @@ public class ShangyingFragment extends Fragment {
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
 
-                 // page++;
-              //  Log.d(TAG, "onPullUpToRefresh:PAGER: "+page);
+                // page++;
+                //  Log.d(TAG, "onPullUpToRefresh:PAGER: "+page);
                 initdata(page);
 
 
             }
         });
         pullToRefreshListView.setAdapter(adapter_shangying);
+        //监听点击事件
+        pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+
+
+            }
+        });
         return view;
     }
 
@@ -99,8 +112,8 @@ public class ShangyingFragment extends Fragment {
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                       page++;
-                        Log.d(TAG, "onPullUpToRefresh:PAGER: "+page);
+                        page++;
+                        Log.d(TAG, "onPullUpToRefresh:PAGER: " + page);
                         if (response != null) {
                             Gson gson = new Gson();
                             ShangYingBean shangyingBean = gson.fromJson(response.body().string(), ShangYingBean.class);
@@ -145,7 +158,7 @@ public class ShangyingFragment extends Fragment {
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                      page++;
+                        page++;
                         if (response != null) {
                             Gson gson = new Gson();
                             ShangYingBean shangyingBean = gson.fromJson(response.body().string(), ShangYingBean.class);
@@ -175,7 +188,5 @@ public class ShangyingFragment extends Fragment {
 
     }
 
-//    private void initview(View view) {
-//
-//    }
+
 }
