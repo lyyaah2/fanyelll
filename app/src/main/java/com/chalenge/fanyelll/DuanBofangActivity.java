@@ -14,7 +14,9 @@ import io.vov.vitamio.widget.VideoView;
 public class DuanBofangActivity extends AppCompatActivity {
 
     protected VideoView mVideoView;
-private MediaController  mediaController;
+    private MediaController mediaController;
+    private String videoUrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +29,17 @@ private MediaController  mediaController;
         mVideoView = (VideoView) findViewById(R.id.videoView);
         //给VItamio进行初始化
         Vitamio.isInitialized(this);
-        Intent  intent=getIntent();
-        Bundle  bundle=intent.getBundleExtra("bundle");
-        String videoUrl=bundle.getString("Videourl");
+        Intent intent = getIntent();
+
+        Bundle bundle = intent.getBundleExtra("bundle");
+        int flag = bundle.getInt("flag", -1);
+        if (flag == 0) {
+            videoUrl =bundle.getString("Url_duanpian");
+        }else if(flag==1){
+            videoUrl=bundle.getString("Url_shangying");
+        }
         //设置播放地址
         mVideoView.setVideoPath(videoUrl);
-
         mediaController = new MediaController(DuanBofangActivity.this);
         mVideoView.setMediaController(mediaController);
         mVideoView.start();

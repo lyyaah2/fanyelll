@@ -41,7 +41,8 @@ public class DuanPianActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent  intent=new Intent(DuanPianActivity.this,DuanBofangActivity.class);
                 Bundle  bundle=new Bundle();
-                bundle.putString("Videourl",data.get(position).getVideourl());
+                bundle.putString("Url_duanpian",data.get(position).getVideourl());
+                bundle.putInt("flag",0);
                 intent.putExtra("bundle",bundle);
 
                 startActivity(intent);

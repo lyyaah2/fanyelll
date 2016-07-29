@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +11,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-
+import com.chalenge.fanyelll.DuanBofangActivity;
 import com.chalenge.fanyelll.Mypath.Mypathconfig;
 import com.chalenge.fanyelll.R;
 import com.chalenge.fanyelll.adapter.ShangYingPullToAdapter;
-
 import com.chalenge.fanyelll.entity.ShangYingBean;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -81,8 +79,12 @@ public class ShangyingFragment extends Fragment {
         pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent();
+                Intent intent = new Intent(getActivity(), DuanBofangActivity.class);
                 Bundle bundle = new Bundle();
+                bundle.putString("Url_shangying", data.get(position).getMoviedata().getTrailerurl());
+                bundle.putInt("flag", 1);
+                intent.putExtra("bundle", bundle);
+                startActivity(intent);
 
 
             }

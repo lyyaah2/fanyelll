@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.chalenge.fanyelll.DianyingyuanshengActivity;
 import com.chalenge.fanyelll.DuanPianActivity;
 import com.chalenge.fanyelll.R;
 import com.chalenge.fanyelll.ShangyingActivity;
@@ -27,26 +28,23 @@ public class fragment_faxian extends Fragment implements View.OnClickListener {
     }
 
     private void initview(View lView) {
-        ImageView  iv_shangying= (ImageView) lView.findViewById(R.id.iv_shangying);
+        ImageView iv_shangying = (ImageView) lView.findViewById(R.id.iv_shangying);
         iv_shangying.setOnClickListener(this);
 
-        ImageView  iv_duanpian= (ImageView) lView.findViewById(R.id.iv_duanpian);
+        ImageView iv_duanpian = (ImageView) lView.findViewById(R.id.iv_duanpian);
         iv_duanpian.setOnClickListener(this);
 
-        ImageView  iv_yingdan= (ImageView) lView.findViewById(R.id.iv_yingdan);
-        iv_duanpian.setOnClickListener(this);
+        ImageView iv_yingdan = (ImageView) lView.findViewById(R.id.iv_yingdan);
+        iv_yingdan.setOnClickListener(this);
 
-        ImageView  iv_shalong= (ImageView) lView.findViewById(R.id.iv_shalong);
-        iv_duanpian.setOnClickListener(this);
+        ImageView iv_shalong = (ImageView) lView.findViewById(R.id.iv_shalong);
+        iv_shalong.setOnClickListener(this);
 
-        ImageView  iv_yingku= (ImageView) lView.findViewById(R.id.iv_yingku);
-        iv_duanpian.setOnClickListener(this);
+        ImageView iv_yingku = (ImageView) lView.findViewById(R.id.iv_yingku);
+        iv_yingku.setOnClickListener(this);
 
-        ImageView  iv_dianyingyuansheng= (ImageView) lView.findViewById(R.id.iv_dianyingyuansheng);
-        iv_duanpian.setOnClickListener(this);
-
-
-
+        ImageView iv_dianyingyuansheng = (ImageView) lView.findViewById(R.id.iv_dianyingyuansheng);
+        iv_dianyingyuansheng.setOnClickListener(this);
 
 
     }
@@ -67,7 +65,7 @@ public class fragment_faxian extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_shangying:
-                getActivity().startActivity(new Intent(getActivity(),ShangyingActivity.class));
+                getActivity().startActivity(new Intent(getActivity(), ShangyingActivity.class));
                 break;
             case R.id.iv_duanpian:
                 Intent intent = new Intent(getActivity(), DuanPianActivity.class);
@@ -82,6 +80,7 @@ public class fragment_faxian extends Fragment implements View.OnClickListener {
             case R.id.iv_yingku:
                 break;
             case R.id.iv_dianyingyuansheng:
+                getActivity().startActivity(new Intent(getActivity(), DianyingyuanshengActivity.class));
                 break;
             case R.id.tv_yingpin:
                 break;

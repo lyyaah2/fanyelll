@@ -26,17 +26,13 @@
         <activity
             android:name=".DuanPianActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <activity
             android:name=".DuanBofangActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
-
         <activity
             android:name=".ShangyingActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".DianyingyuanshengActivity"></activity>
     </application>
 
 </manifest>
