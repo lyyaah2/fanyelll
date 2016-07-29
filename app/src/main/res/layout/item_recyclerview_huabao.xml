@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="450dp">
+
+    <GridView
+        android:id="@+id/gridview_huabao"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:numColumns="3"
+        >
+    </GridView>
+
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/gridview_huabao"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:id="@+id/text_subject_huabao"
+            android:text="subject"
+            android:textSize="23sp"
+            android:textColor="#000000"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <TextView
+            android:id="@+id/text_intro_huabao"
+            android:layout_below="@id/text_subject_huabao"
+            android:text="intro"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/RelativeLayout"
+        >
+
+        <ImageView
+            android:layout_marginRight="10sp"
+            android:src="@mipmap/comment_like"
+            android:layout_width="20sp"
+            android:layout_height="20sp"
+            android:layout_gravity="center_vertical"
+            />
+
+        <TextView
+            android:text="赞"
+            android:layout_marginRight="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:layout_marginRight="20sp"
+            android:layout_gravity="center_vertical"
+
+            />
+
+        <ImageView
+            android:layout_marginRight="10sp"
+            android:src="@mipmap/index_comment"
+            android:layout_width="20sp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="20sp"/>
+
+        <TextView
+            android:text="评论"
+            android:layout_marginRight="10sp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_gravity="center_vertical"
+
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/showing_more"
+
+            android:gravity="center_vertical"
+            android:layout_marginLeft="80sp"
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

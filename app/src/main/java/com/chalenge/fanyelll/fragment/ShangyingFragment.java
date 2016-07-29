@@ -13,10 +13,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-import com.chalenge.fanyelll.DuanBofangActivity;
 import com.chalenge.fanyelll.Mypath.Mypathconfig;
 import com.chalenge.fanyelll.R;
-import com.chalenge.fanyelll.adapter.Adapter_duanpianActivity;
 import com.chalenge.fanyelll.adapter.ShangYingPullToAdapter;
 
 import com.chalenge.fanyelll.entity.ShangYingBean;
@@ -53,7 +51,7 @@ public class ShangyingFragment extends Fragment {
         // initview(view);
 
         index1 = getArguments().getInt("index1", -1);
-        Log.e("pp", "==" + index1);
+
         initdata(1);
 
         adapter_shangying = new ShangYingPullToAdapter(data, getActivity());
@@ -72,7 +70,7 @@ public class ShangyingFragment extends Fragment {
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
 
                 // page++;
-                //  Log.d(TAG, "onPullUpToRefresh:PAGER: "+page);
+
                 initdata(page);
 
 
@@ -102,18 +100,18 @@ public class ShangyingFragment extends Fragment {
                         .url(path_shangying)
                         .build();
                 Call call = okHttpClient.newCall(request);
-                Log.i(TAG, "initdata:call ");
+
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Log.i(TAG, "initdata:onFailure " + e);
+
 
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         page++;
-                        Log.d(TAG, "onPullUpToRefresh:PAGER: " + page);
+
                         if (response != null) {
                             Gson gson = new Gson();
                             ShangYingBean shangyingBean = gson.fromJson(response.body().string(), ShangYingBean.class);
@@ -148,11 +146,11 @@ public class ShangyingFragment extends Fragment {
                         .url(path_shangying2)
                         .build();
                 call = okHttpClient.newCall(request);
-                Log.i(TAG, "initdata:call ");
+
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Log.i(TAG, "initdata:onFailure " + e);
+
 
                     }
 

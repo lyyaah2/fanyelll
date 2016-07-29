@@ -4,49 +4,128 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
     >
+    <com.chalenge.fanyelll.customview.ScrollViewY
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <!--最上面viewPager-->
      <android.support.v4.view.ViewPager
          android:id="@+id/viewpager_tuijian"
          android:layout_width="match_parent"
-         android:layout_height="150dp"/>
+         android:layout_height="180dp"
+
+         />
     <!--选择-->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
        <!--上映-->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <RelativeLayout
+           android:layout_width="0dp"
+           android:layout_weight="1"
+            android:layout_height="90dp">
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"
+                android:id="@+id/imageview_screen_select"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/find_online"
+                android:layout_centerHorizontal="true"
                 />
             <TextView
+                android:id="@+id/textview_screen_select"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="上映"
+                android:layout_below="@id/imageview_screen_select"
+                android:layout_centerHorizontal="true"
                 />
-        </LinearLayout>
+        </RelativeLayout>
         <!--短片-->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="90dp">
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"
+                android:id="@+id/imageview_short_select"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/find_movieline"
+                android:layout_centerHorizontal="true"
                 />
             <TextView
+                android:id="@+id/textview_short_select"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="上映"
+                android:text="短片"
+                android:layout_below="@id/imageview_short_select"
+                android:layout_centerHorizontal="true"
                 />
-        </LinearLayout>
+        </RelativeLayout>
         <!--影单-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="90dp">
+            <ImageView
+                android:id="@+id/imageview_movielist_select"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/find_yingdan"
+                android:layout_centerHorizontal="true"
+                />
+            <TextView
+                android:id="@+id/textview_movielist_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="影单"
+                android:layout_below="@id/imageview_movielist_select"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+        <!--更多-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="90dp">
+            <ImageView
+                android:id="@+id/imageview_more_select"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/find_right_more"
+                android:layout_centerHorizontal="true"
+                />
+            <TextView
+                android:id="@+id/textview_more_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="更多"
+                android:layout_below="@id/imageview_more_select"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
 
     </LinearLayout>
+
+    <com.chalenge.fanyelll.customview.MyRecyclerview
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        >
+
+
+    </com.chalenge.fanyelll.customview.MyRecyclerview>
+
+    </LinearLayout>
+    </com.chalenge.fanyelll.customview.ScrollViewY>
+
 
 
 </LinearLayout>

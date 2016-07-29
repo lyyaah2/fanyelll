@@ -4,65 +4,108 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.chalenge.fanyelll.adapter.adapter_pageradapter_tablayout;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 public class MainActivity extends AppCompatActivity {
 
     private TabLayout mTablayout;
     private ViewPager mViewPager;
     private String[] titles;
-    private int[] images;
+    private SlidingMenu slidingMenu;
+    private ImageView leftmunu;
+    private ImageView rightmenu;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initview();
-//        for (int i = 0; i < 5; i++) {
-//            TabLayout.Tab tab = mTablayout.getTabAt(i);
-//            if (tab != null) {
-//                tab.setCustomView(getTabView(i));
-//            }
-//        }
 
-
+        initLeftRightSlidingMenu();
         mViewPager.setAdapter(new adapter_pageradapter_tablayout(getSupportFragmentManager(),titles));
         mTablayout.setupWithViewPager(mViewPager);
 
     }
+    //初始化SlidingMenu
+    private void initLeftRightSlidingMenu() {
+
+        //1,实例化SlidingMenu对象
+        slidingMenu = new SlidingMenu(MainActivity.this);
+        //2,设置侧滑菜单的样式  LEFT  ,LEFT_RIGHT ,RIGHT
+        slidingMenu.setMode(SlidingMenu.LEFT_RIGHT);
+        slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+        //3,引入菜单布局
+        // 方式一  VIew
+        // slidingMenu.setMenu(LayoutInflater.from(MainActivity.this).inflate());
+        //方法二  R.layout.xxx
+        slidingMenu.setMenu(R.layout.left);
+
+        //设置右边菜单
+        slidingMenu.setSecondaryMenu(R.layout.right);
+
+
+        slidingMenu.attachToActivity(MainActivity.this, SlidingMenu.SLIDING_CONTENT);
+
+        //获取右边布局
+        View v2 =  slidingMenu.getMenu();
+        ImageView right = (ImageView) v2.findViewById(R.id.btnMenu1);
+       right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                slidingMenu.toggle();
+            }
+        });
+
+        //获取菜单的View
+        View v = slidingMenu.getSecondaryMenu();
+        Button right_close = (Button) v.findViewById(R.id.right_close);
+        right_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("AAA","AAAAAAAAAAAAAA");
+                //万能开关
+                slidingMenu.toggle();
+            }
+        });
+        leftmunu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(slidingMenu!=null){
+                    slidingMenu.toggle();
+                }
+            }
+        });
+        rightmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(slidingMenu!=null){
+                    slidingMenu.toggle();
+                }
+            }
+        });
+    }
+
 
     private void initview() {
         mTablayout = (TabLayout) findViewById(R.id.Tablayout_zhujiemian);
         mViewPager = (ViewPager) findViewById(R.id.ViewPager_zhujiemian);
+        leftmunu = (ImageView) findViewById(R.id.leftmenuButton);
+        rightmenu = (ImageView) findViewById(R.id.rightmenuButton);
+        slidingMenu=new SlidingMenu(MainActivity.this);
         inittitledata();
 
 
     }
 
     private void inittitledata() {
-        titles=new String[]{"设置","我的","推荐","发现","搜索"};
-        images=new int[]{R.mipmap.noavatar_small,0,0,0,R.mipmap.red_search};
+        titles=new String[]{"我的","推荐","发现"};
+      }
 
-
-    }
-    public View getTabView(int position){
-        //首先为子tab布置一个布局
-        View v = LayoutInflater.from(MainActivity.this).inflate(R.layout.tab_title,null);
-        ImageView image = (ImageView) v.findViewById(R.id.image_tabtitle);
-        TextView text = (TextView) v.findViewById(R.id.textview_tabtitle);
-        if (!titles[position].equals("")) {
-            text.setText(titles[position]);
-        }
-        if (images[position]!=0) {
-           image.setImageResource(images[position]);
-        }
-
-
-        return v;
-    }
 }

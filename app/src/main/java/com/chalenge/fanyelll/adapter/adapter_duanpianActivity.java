@@ -2,7 +2,6 @@ package com.chalenge.fanyelll.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,12 +20,12 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/7/26.
  */
-public class Adapter_duanpianActivity extends BaseAdapter {
+public class adapter_duanpianActivity extends BaseAdapter {
 
     private Context context;
     private List<DuanpianBean.DataBean.ListBean> data;
 
-    public Adapter_duanpianActivity(Context context, List<DuanpianBean.DataBean.ListBean> data) {
+    public adapter_duanpianActivity(Context context, List<DuanpianBean.DataBean.ListBean> data) {
         this.context = context;
         if (data != null) {
             this.data = data;

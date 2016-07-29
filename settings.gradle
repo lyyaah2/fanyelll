@@ -1,2 +1,3 @@
-include ':app', 'vitamiolibrary', 'vitamiolibrarys'
+include ':app', 'vitamiolibrary', 'vitamiolibrarys', ':vitamiolibrary'
 include ':pullToRefshlibrary'
+include ':app', ':library'
