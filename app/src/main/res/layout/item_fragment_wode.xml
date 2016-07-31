@@ -1,11 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <!--第一排-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        >
+        <!--想看-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_item"
+            >
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+
+                >
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/my_like"
+                android:layout_width="15dp"
+                android:layout_height="15dp"/>
+            <TextView
+            android:layout_gravity="center_vertical"
+            android:text="想看"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_item"
+            >
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+
+                >
+                <ImageView
+
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/index_seed"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"/>
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:text="看过"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+    <!--2-->
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/shape_item"
+
+        >
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/my_notice"
+            android:layout_width="15dp"
+            android:layout_height="15dp"/>
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的提醒"
+            />
+
+    </LinearLayout>
+    <!--3-->
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/shape_item"
+
+        >
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/salon_like"
+            android:layout_width="15dp"
+            android:layout_height="15dp"/>
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我赞过的"
+            />
+
+    </LinearLayout>
+
+    <!--4-->
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/shape_item"
+
+        >
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/find_salon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"/>
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的沙龙"
+            />
+
+    </LinearLayout>
+    <!--5-->
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/shape_item"
+
+        >
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/my_cache"
+            android:layout_width="15dp"
+            android:layout_height="15dp"/>
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的缓存"
+            />
+
+    </LinearLayout>
+
+
+    <!--6-->
+<LinearLayout
+android:layout_marginTop="10dp"
+android:orientation="horizontal"
+android:layout_width="match_parent"
+android:layout_height="0dp"
+android:layout_weight="1"
+android:background="@drawable/shape_item"
+>
     <TextView
+        android:text="关注的影单"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="我的"
-        />
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        >
+
+    </LinearLayout>
+
 
 </LinearLayout>

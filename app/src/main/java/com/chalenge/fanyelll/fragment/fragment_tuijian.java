@@ -14,9 +14,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.chalenge.fanyelll.DuanPianActivity;
+import com.chalenge.fanyelll.MainActivity;
 import com.chalenge.fanyelll.R;
 import com.chalenge.fanyelll.ShangyingActivity;
-import com.chalenge.fanyelll.YingpingActivity;
+import com.chalenge.fanyelll.YingdanActivity;
 import com.chalenge.fanyelll.adapter_tuijian.Adapter_recyclerview;
 import com.chalenge.fanyelll.adapter_tuijian.adapter_viewpager_image;
 import com.chalenge.fanyelll.customview.FullyLinearLayoutManager;
@@ -27,6 +28,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -54,7 +56,7 @@ public class fragment_tuijian extends Fragment {
     private MyRecyclerview recyclerview;
     private Adapter_recyclerview adapter_recyclerview;
     private List<First_tuijian_bean.DataBean.ListBean> list = new ArrayList<>();
-    private String path1 = "http://morguo.com/forum.php?mod=movieexplorer&v=3&androidflag=1&page=%d&pdateline=1469668475";
+    private String path1 = "http://morguo.com/forum.php?mod=movieexplorer&v=3&androidflag=1&page=%d&pdateline=%s";
     private int page = 1;
     private String pathOk;
     private boolean isBottom = false;
@@ -62,6 +64,7 @@ public class fragment_tuijian extends Fragment {
     private ImageView duanpian_to;
     private ImageView yingdan_to;
     private ImageView gengduo_to;
+    private String time;
 
     //声明计时器
     private Timer timer;
@@ -86,7 +89,15 @@ public class fragment_tuijian extends Fragment {
         lView = inflater.inflate(R.layout.item_fragment_tuijian, container, false);
         imagePaths_viewpager = new ArrayList<>();
         initview();
-        pathOk = String.format(path1, page);
+        //得到系统时间戳
+        String time= String.valueOf(Calendar.getInstance().getTimeInMillis());
+
+
+
+
+
+
+        pathOk = String.format(path1, page,time);
         initOkhttp(pathOk);
         lAdapter_viewpager_image = new adapter_viewpager_image(mImageViewList, getContext());
         mViewPager.setAdapter(lAdapter_viewpager_image);
@@ -120,7 +131,7 @@ public class fragment_tuijian extends Fragment {
 //                    public void handleMessage(Message msg) {
 //                        super.handleMessage(msg);
 //                        Toast.makeText(getContext(),"加载跟多------",Toast.LENGTH_LONG).show();
-//                        initOkhttp(String.format(path1,page));
+//                        initOkhttp(String.format(path1,page,time));
 //
 //                    }
 //                };
@@ -162,8 +173,15 @@ public class fragment_tuijian extends Fragment {
         yingdan_to.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), YingpingActivity.class);
+                Intent intent = new Intent(getContext(), YingdanActivity.class);
                 startActivity(intent);
+            }
+        });
+        gengduo_to.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             MainActivity activity= (MainActivity) getActivity();
+                activity.GotoMore();
             }
         });
     }

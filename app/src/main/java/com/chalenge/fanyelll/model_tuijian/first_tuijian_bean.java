@@ -287,6 +287,7 @@ public class First_tuijian_bean {
                 private String name;
                 private String desc;
                 private String videourl;
+                private String musicurl;
 
                 private List<ImageListBean> imagelist;
 
@@ -314,6 +315,16 @@ public class First_tuijian_bean {
                 public void setName(String name) {
                     this.name = name;
                 }
+
+
+                public String getMusicurl() {
+                    return musicurl;
+                }
+
+                public void setMusicurl(String musicurl) {
+                    this.musicurl = musicurl;
+                }
+
 
                 public String getDesc() {
                     return desc;

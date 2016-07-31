@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         mTablayout.setupWithViewPager(mViewPager);
 
     }
+    public void GotoMore(){
+        mViewPager.setCurrentItem(2);
+    }
     //初始化SlidingMenu
     private void initLeftRightSlidingMenu() {
 
@@ -86,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(slidingMenu!=null){
-                    slidingMenu.toggle();
+                    slidingMenu.showSecondaryMenu();
                 }
             }
         });

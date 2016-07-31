@@ -3,6 +3,7 @@ package com.chalenge.fanyelll.adapter_tuijian;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -31,6 +32,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -47,11 +49,21 @@ public class Adapter_recyclerview extends RecyclerView.Adapter<Adapter_recyclerv
     private String pathhead="http://morguo.com/";
     private List<String> thumpaths=new ArrayList<>();
     private List<Map<String,Bitmap>> maps=new ArrayList<>();
+    private MediaPlayer mediaPlayer;
+    String image_path=null;
+    String lSubject=null;
+    String lIntro=null;
+    String lTid=null;
+    String lImage=null;
+    String lVideourl=null;
     public Adapter_recyclerview(List<First_tuijian_bean.DataBean.ListBean> mList_item, Context context) {
         this.context = context;
         inflater=LayoutInflater.from(context);
 
         this.mList_item=mList_item;
+        if (mediaPlayer== null) {
+            mediaPlayer = new MediaPlayer();
+        }
 
     }
 
@@ -60,7 +72,7 @@ public class Adapter_recyclerview extends RecyclerView.Adapter<Adapter_recyclerv
 
 
 
-        Log.i(TAG, "onCreateViewHolder: ");
+
         View viewItem=null;
         ViewHolder viewHolder=null;
 
@@ -97,7 +109,7 @@ public class Adapter_recyclerview extends RecyclerView.Adapter<Adapter_recyclerv
                 viewHolder.mTextView_subject= (TextView) viewItem.findViewById(R.id.text_subject_yuansheng);
                 viewHolder.mTextView_intro= (TextView) viewItem.findViewById(R.id.text_intro_yuansheng);
                 viewHolder.image= (ImageView) viewItem.findViewById(R.id.image_yuansheng);
-
+                viewHolder.music_start=(ImageView) viewItem.findViewById(R.id.music_start);
                 viewHolder.tag=3;
 
 
@@ -178,17 +190,14 @@ public class Adapter_recyclerview extends RecyclerView.Adapter<Adapter_recyclerv
         }
 
     }
-    String image_path=null;
-    String lSubject=null;
-    String lIntro=null;
-    String lTid=null;
+
     public void getdata(ViewHolder holder, int position){
 
 
          First_tuijian_bean.DataBean.ListBean.ItemdataBean lItemdata = mList_item.get(position).getItemdata();
          lSubject = lItemdata.getSubject();
          lIntro = lItemdata.getIntro();
-         String lImage = lItemdata.getImage();
+        lImage = lItemdata.getImage();
 
         image_path=pathhead+lImage;
          holder.mTextView_subject.setText(lSubject);
@@ -199,15 +208,15 @@ public class Adapter_recyclerview extends RecyclerView.Adapter<Adapter_recyclerv
                  .into(holder.image);
 
      }
-    String lVideourl=null;
+
     public void getdatavideo(ViewHolder holder, int position){
 
 
         First_tuijian_bean.DataBean.ListBean.ItemdataBean lItemdata = mList_item.get(position).getItemdata();
         lSubject = lItemdata.getSubject();
         lIntro = lItemdata.getIntro();
-        String lImage = lItemdata.getImage();
-         lVideourl = lItemdata.getVideourl();
+        lImage = lItemdata.getImage();
+       final String  lVideourl_video = lItemdata.getVideourl();
 
         image_path=pathhead+lImage;
         holder.mTextView_subject.setText(lSubject);
@@ -224,7 +233,8 @@ public class Adapter_recyclerview extends RecyclerView.Adapter<Adapter_recyclerv
 
                 Intent  intent=new Intent(context,DuanBofangActivity.class);
                 Bundle bundle=new Bundle();
-                bundle.putString("Videourl",lVideourl);
+                bundle.putString("Url_duanpian",lVideourl_video);
+                bundle.putInt("flag",0);
                 intent.putExtra("bundle",bundle);
 
                 context.startActivity(intent);
@@ -238,14 +248,14 @@ public class Adapter_recyclerview extends RecyclerView.Adapter<Adapter_recyclerv
     //影评
     public void getdatayingping(ViewHolder holder, int position){
 
-        Log.i(TAG, "getdata: ");
-        First_tuijian_bean.DataBean.ListBean.ItemdataBean lItemdata = mList_item.get(position).getItemdata();
-        String lSubject = lItemdata.getSubject();
-        String lIntro = lItemdata.getIntro();
-        String lImage = lItemdata.getImage();
-        lTid = lItemdata.getTid();
 
-        String image_path=pathhead+lImage;
+        First_tuijian_bean.DataBean.ListBean.ItemdataBean lItemdata = mList_item.get(position).getItemdata();
+         lSubject = lItemdata.getSubject();
+        lIntro = lItemdata.getIntro();
+        lImage = lItemdata.getImage();
+        final String  lTid_yingping = lItemdata.getTid();
+
+        image_path=pathhead+lImage;
         holder.mTextView_subject.setText(lSubject);
         holder.mTextView_intro.setText(lIntro);
         //下载图片
@@ -261,7 +271,7 @@ public class Adapter_recyclerview extends RecyclerView.Adapter<Adapter_recyclerv
             public void onClick(View v) {
 
                 Intent intent =new Intent(context, YingpingActivity.class);
-                intent.putExtra("Tid",lTid);
+                intent.putExtra("Tid",lTid_yingping);
                 context.startActivity(intent);
             }
         });
@@ -269,32 +279,34 @@ public class Adapter_recyclerview extends RecyclerView.Adapter<Adapter_recyclerv
 
     public void getdatataici(final ViewHolder holder, int position){
 
-        Log.i(TAG, "getdata: ");
+
         First_tuijian_bean.DataBean.ListBean.ItemdataBean lItemdata = mList_item.get(position).getItemdata();
         lSubject = lItemdata.getSubject();
         lIntro = lItemdata.getIntro();
-        String lImage = lItemdata.getImage();
+       lImage = lItemdata.getImage();
 
-        image_path=pathhead+lImage;
+         final String image_path_taici=pathhead+lImage;
+        Log.i(TAG, "getdatataici: 原图地址"+image_path_taici);
         holder.mTextView_subject.setText(lSubject);
         holder.mTextView_intro.setText(lIntro);
         //下载图片
         Picasso.with(context)
-                .load(image_path)
+                .load(image_path_taici)
                 .into(holder.image);
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 View popWindowview=inflater.inflate(R.layout.item_recyclerview_taici,null,false);
                 ImageView lImageView= (ImageView) popWindowview.findViewById(R.id.image_taici);
+                Log.i(TAG, "getdatataici: popwindow地址"+image_path_taici);
                 Picasso.with(context)
-                        .load(image_path)
+                        .load(image_path_taici)
                         .into(lImageView);
                 TextView lViewById_s = (TextView) popWindowview.findViewById(R.id.text_subject_taici);
                 TextView lViewById_i = (TextView) popWindowview.findViewById(R.id.text_subject_taici);
                 lViewById_s.setText(lSubject);
                 lViewById_i.setText(lIntro);
-                PopupWindow lPopupWindow=new PopupWindow(popWindowview, RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT, true);
+                PopupWindow lPopupWindow=new PopupWindow(popWindowview, RelativeLayout.LayoutParams.MATCH_PARENT,  RelativeLayout.LayoutParams.MATCH_PARENT, true);
 
                 lPopupWindow.showAtLocation(holder.image, Gravity.CENTER,0,0);
             }
@@ -308,9 +320,9 @@ public class Adapter_recyclerview extends RecyclerView.Adapter<Adapter_recyclerv
         First_tuijian_bean.DataBean.ListBean.ItemdataBean lItemdata = mList_item.get(position).getItemdata();
         String name = lItemdata.getName();
         String lDesc = lItemdata.getDesc();
-        String lImage = lItemdata.getImage();
+     lImage = lItemdata.getImage();
 
-        String image_path=pathhead+lImage;
+        image_path=pathhead+lImage;
         holder.mTextView_subject.setText(name);
         holder.mTextView_intro.setText(lDesc);
         //下载图片
@@ -318,18 +330,22 @@ public class Adapter_recyclerview extends RecyclerView.Adapter<Adapter_recyclerv
                 .load(image_path)
 
                 .into(holder.image);
+
     }
+    String yuansheng_url=null;
     public void getdataMusic(ViewHolder holder, int position){
 
 
         First_tuijian_bean.DataBean.ListBean.ItemdataBean lItemdata = mList_item.get(position).getItemdata();
-        String lSubject = lItemdata.getSubject();
-        String lIntro = lItemdata.getIntro();
-        String lImage = lItemdata.getImage();
+         lSubject = lItemdata.getSubject();
+        lIntro = lItemdata.getIntro();
+        lImage = lItemdata.getImage();
+        yuansheng_url=lItemdata.getMusicurl();
 
         String image_path=pathhead+lImage;
         holder.mTextView_subject.setText(lSubject);
         holder.mTextView_intro.setText(lIntro);
+
         //下载图片
         Picasso.with(context)
                 .load(image_path)
@@ -356,13 +372,40 @@ public class Adapter_recyclerview extends RecyclerView.Adapter<Adapter_recyclerv
                     }
                 })
                 .into(holder.image);
+        holder.music_start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.pause();
+                    return;
+                }
+                mediaPlayer.reset();
+
+                try {
+                    mediaPlayer.setDataSource(yuansheng_url);
+                } catch (IOException pE) {
+                    pE.printStackTrace();
+                }
+                mediaPlayer.prepareAsync();
+                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mp) {
+                        mediaPlayer.start();
+
+                    }
+                });
+
+            }
+        });
+
     }
     public void getdatahuabao(ViewHolder holder, int position){
 
 
         First_tuijian_bean.DataBean.ListBean.ItemdataBean lItemdata = mList_item.get(position).getItemdata();
-        String lSubject = lItemdata.getSubject();
-        String lIntro = lItemdata.getIntro();
+       lSubject = lItemdata.getSubject();
+        lIntro = lItemdata.getIntro();
         for (int i = 0; i < 9; i++) {
 
                 String lThumb =pathhead+lItemdata.getImageListBean().get(i).getThumb();
@@ -478,7 +521,7 @@ public class Adapter_recyclerview extends RecyclerView.Adapter<Adapter_recyclerv
 
 
         private int tag=0;
-        private ImageView image, image_video;
+        private ImageView image, image_video,music_start;
         private TextView mTextView_subject,mTextView_intro;
         private GridView mGridView;
         public ViewHolder(View itemView) {
